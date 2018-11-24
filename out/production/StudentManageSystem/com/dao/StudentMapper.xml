@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.StudentDao">
+
+    <select id="selectAll" resultType="com.entity.Student">
+        select * from student
+        <where>
+            <if test="name != null">and name like #{name}</if>
+        </where>
+        LIMIT #{start},#{page}
+    </select>
+
+    <select id="getCount" resultType="int">
+        select
+        count(*)
+        from student
+        <where>
+            <if test="name != null">name like #{name}</if>
+        </where>
+    </select>
+
+    <delete id="multiDelete">
+        delete from student
+        where id in
+        <foreach collection="array" item="i" open="(" separator=","
+                 close=")">
+            #{i}
+        </foreach>
+    </delete>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.entity.Student">
+        update student
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <insert id="add" parameterType="com.entity.Student">
+        insert into student
+        values (0, #{name}, #{age}, #{gender})
+    </insert>
+
+</mapper>

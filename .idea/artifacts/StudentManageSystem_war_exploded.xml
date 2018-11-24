@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="StudentManageSystem:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/StudentManageSystem_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="StudentManageSystem/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="StudentManageSystem" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="Jackson" />
+          <element id="library" level="application" name="ssm(SpringMvc 1.8)" />
+          <element id="file-copy" path="E:/workspace/student_servlet/WebContent/WEB-INF/lib/mysql-connector-java-5.1.44.jar" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

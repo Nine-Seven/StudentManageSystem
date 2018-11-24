@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+
+
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 1.把方法映射成地址 -->
+	<!-- ①开启注解 ===》指定加载controller包下的注解-->
+	<context:component-scan base-package="com.controller"/>
+	
+	<!-- ②通过mvc标签完成 ===》让springmvc加载@RequestMapping相关的注解-->
+	<mvc:annotation-driven>
+	</mvc:annotation-driven>
+	
+	<!-- 2.做流程跳转 -->
+	<!-- 通过视图解析器完成流程跳转 ===》把方法返回值(逻辑视图)解析成物理视图(真正页面)
+		通过转发的方式请求物理视图
+		通过bean标签配置
+	-->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 把逻辑视图名加一个前缀 -->
+		<property name="prefix" value="/"/>
+		<!-- 把逻辑视图名加一个后缀 -->
+		<property name="suffix" value=".jsp"/>
+		<!-- /success.jsp ===>/表示根目录；WebRoot-->
+		
+		<!-- 形成了一个物流视图，通过转发请求这个新形成的物理视图 -->
+	</bean>
+
+
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
